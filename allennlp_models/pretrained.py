@@ -40,7 +40,7 @@ def get_pretrained_models() -> Dict[str, ModelCard]:
     )
 
     for model_card_path in glob.glob(model_card_paths):
-        if "template" not in model_card_path:
+        if "template" not in os.path.basename(model_card_path):
             model_card = ModelCard.from_params(params=Params.from_file(model_card_path))
             pretrained_models[model_card.id] = model_card
     return pretrained_models
